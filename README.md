@@ -1,25 +1,72 @@
-# OpenRCT2 plugin boilerplate
-This boilerplate project (starting point to create OpenRCT2 plugins with) allows you to create a multi-file ES6 OpenRCT2 plugin and have it transpiled to a single ES5 file (Which OpenRCT2 supports).
+# OpenRCT2 Plugin Boilerplate
+
+A modern boilerplate for creating OpenRCT2 plugins with ES6+ JavaScript, automatic transpilation, and CI/CD via GitHub Actions.
+
+## Features
+
+- ES6+ syntax with automatic transpilation to ES5
+- Multi-file project support with Rollup bundling
+- Hot-reloading during development with watch mode
+- Automated releases via GitHub Actions
+- Version management from package.json
+- Modern tooling (Babel 7, Rollup 4)
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [OpenRCT2](https://openrct2.org/)
 
 ## Installation
-- Click "use this template" to create a repo using this boilerplate.
-- Pull or download your project onto your computer.
-- Run `npm install` to install all the required packages (Download [Node.js](https://nodejs.org/) if npm is not recognized).
-- In the package.json and `src/index.js`, replace `MYPLUGINNAME` with the name of your plugin, and replace `OPENRCT2PATH` with the path to your OpenRCT2 directory.
 
-## Build
-You can build your project using the following commands:
-- `npm run build` Manually build the project
-- `npm run watch build` Automatically build everytime a source file is updated
-If the installation was done correctly the transpiled JS file can be found in both the `build` directory and in the `plugin` directory of OpenRCT2. 
-With hotreloading enabled and the watch command being used you no longer have to restart the game, and move files around manually.
+1. Click "Use this template" to create a repo using this boilerplate
+2. Clone your new repository to your computer
+3. Run `npm install` to install dependencies (requires [Node.js](https://nodejs.org/))
+4. Update the plugin name in `package.json` (replace `openrct2-plugin-boilerplate`)
+
+## Configuration
+
+### Local Development Setup
+
+1. Copy `deploy.config.example.json` to `deploy.config.json`
+2. Update the `pluginPath` to your OpenRCT2 plugin directory:
+   - Windows: `C:/Users/<YourUsername>/Documents/OpenRCT2/plugin/`
+   - macOS: `~/Library/Application Support/OpenRCT2/plugin/`
+   - Linux: `~/.config/OpenRCT2/plugin/`
+
+### TypeScript Definitions
+
+Update the path in `src/index.js` to point to your OpenRCT2 installation's `openrct2.d.ts` file for IntelliSense support.
+
+## Build Commands
+
+- `npm run build` - Build the plugin once
+- `npm run watch` - Automatically rebuild when source files change
+- `npm run deploy` - Build and copy to your OpenRCT2 plugin directory
+
+With hot-reloading enabled in OpenRCT2 and watch mode running, changes are automatically reflected in-game without restarting.
 
 ## Development
-You can create your project in the `src` directory. The `index.js` file is the root of your project, from there feel free to [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) other modules (files).
 
-## Helper Suggestions
-Check out OliUI if you plan on incorporating a custom window in your plugin. OliUI takes away the hassle that comes with having to position every single UI element manually and instead lets you focus on the functionality.
-OliUI is an ES6 module that is compatible with this boilerplate. Simple copy [**the OliUI module file**](https://github.com/oli414/OliUI/blob/master/build/OliUI.js) into your project's `src/` folder and import the module.
-```javascript
-import Oui from "./OliUI";
-```
+Create your plugin in the `src/` directory:
+- `src/index.js` is the entry point
+- Import other modules using ES6 `import` syntax
+- The plugin name and version are automatically read from `package.json`
+
+## Releases
+
+Releases are automated via GitHub Actions:
+
+1. Update your code and commit changes
+2. Create and push a version tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+3. GitHub Actions will automatically:
+   - Update `package.json` with the tag version
+   - Build the plugin
+   - Create a GitHub release with the built file
+
+## License
+
+MIT

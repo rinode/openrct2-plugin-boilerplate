@@ -3,14 +3,15 @@
 
 // Import a module from another file.
 import Message from "./module";
+import { version, name } from "../package.json";
 
 function main() {
     console.log(Message); // Display the imported "Hallo World" message from module.js.
 }
 
 registerPlugin({
-    name: "MYPLUGINNAME",
-    version: "0.1",
+    name: name,
+    version: version,
     licence: "MIT", // Make sure to set the license prior to release
     authors: [""],
     type: "local",

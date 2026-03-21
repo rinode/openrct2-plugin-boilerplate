@@ -1,10 +1,11 @@
 {
-  "name": "MYPLUGINNAME",
-  "version": "1.0.0",
-  "description": "",
+  "name": "openrct2-plugin-boilerplate",
+  "version": "0.0.0",
+  "description": "A boilerplate for creating OpenRCT2 plugins with modern JavaScript tooling",
   "main": "index.js",
   "scripts": {
-    "build": "rollup ./src/index.js --file ./build/MYPLUGINNAME.js && babel ./build/MYPLUGINNAME.js --out-file ./build/MYPLUGINNAME.js && cpy ./build/MYPLUGINNAME.js OPENRCT2PATH/plugin/ --rename=MYPLUGINNAME.js",
+    "build": "rollup ./src/index.js --file ./build/openrct2-plugin-boilerplate.js && babel ./build/openrct2-plugin-boilerplate.js --out-file ./build/openrct2-plugin-boilerplate.js",
+    "deploy": "node deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm-watch"
   },
@@ -14,14 +15,13 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^8.1.0",
-    "babel-preset-env": "^1.7.0",
-    "cpy-cli": "^3.1.1",
-    "npm-watch": "^0.6.0",
-    "rollup": "^2.7.2"
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/cli": "^7.24.0",
+    "@rollup/plugin-json": "^6.1.0",
+    "rollup": "^4.13.0",
+    "cpy-cli": "^5.0.0",
+    "npm-watch": "^0.13.0"
   },
   "dependencies": {}
 }
