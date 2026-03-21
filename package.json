@@ -1,6 +1,6 @@
 {
   "name": "openrct2-plugin-boilerplate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A boilerplate for creating OpenRCT2 plugins with modern JavaScript tooling",
   "main": "index.js",
   "scripts": {
