@@ -1,71 +1,55 @@
 # OpenRCT2 Plugin Boilerplate
 
-A modern boilerplate for creating OpenRCT2 plugins with ES6+ JavaScript, automatic transpilation, and CI/CD via GitHub Actions.
+A boilerplate for creating OpenRCT2 plugins with TypeScript, Rollup, and GitHub Actions.
 
 ## Features
 
-- ES6+ syntax with automatic transpilation to ES5
-- Multi-file project support with Rollup bundling
-- Hot-reloading during development with watch mode
+- TypeScript with ES2020 target for QuickJS (OpenRCT2's JS engine)
+- Rollup bundling with watch mode for development
 - Automated releases via GitHub Actions
-- Version management from package.json
-- Modern tooling (Babel 7, Rollup 4)
+- OpenRCT2 type definitions via `@openrct2/types`
 
 ## Requirements
 
-- [Node.js](https://nodejs.org/) (v16 or higher)
+- [Node.js](https://nodejs.org/) v16+
 - [OpenRCT2](https://openrct2.org/)
 
-## Installation
+## Quick Start
 
-1. Click "Use this template" to create a repo using this boilerplate
-2. Clone your new repository to your computer
-3. Run `npm install` to install dependencies (requires [Node.js](https://nodejs.org/))
-4. Update the plugin name in `package.json` (replace `openrct2-plugin-boilerplate`)
-
-## Configuration
-
-### Local Development Setup
-
-1. Copy `deploy.config.example.json` to `deploy.config.json`
-2. Update the `pluginPath` to your OpenRCT2 plugin directory:
-   - Windows: `C:/Users/<YourUsername>/Documents/OpenRCT2/plugin/`
-   - macOS: `~/Library/Application Support/OpenRCT2/plugin/`
-   - Linux: `~/.config/OpenRCT2/plugin/`
-
-### TypeScript Definitions
-
-Update the path in `src/index.js` to point to your OpenRCT2 installation's `openrct2.d.ts` file for IntelliSense support.
-
-## Build Commands
-
-- `npm run build` - Build the plugin once
-- `npm run watch` - Automatically rebuild when source files change
-- `npm run deploy` - Build and copy to your OpenRCT2 plugin directory
-
-With hot-reloading enabled in OpenRCT2 and watch mode running, changes are automatically reflected in-game without restarting.
+1. Click "Use this template" to create your repo
+2. Clone it and run `npm install`
+3. Update the plugin name in `package.json`, `rollup.config.js`, and `src/index.ts`
 
 ## Development
 
-Create your plugin in the `src/` directory:
-- `src/index.js` is the entry point
-- Import other modules using ES6 `import` syntax
-- The plugin name and version are automatically read from `package.json`
+```bash
+npm run develop   # builds to plugin folder with watch mode
+npm run build     # release build to ./build/
+```
+
+Set the `OPENRCT2_PLUGIN_PATH` environment variable in `rollup.config.js` to your OpenRCT2 plugin directory:
+
+- **Windows:** `C:/Users/<YourUsername>/Documents/OpenRCT2/plugin`
+- **macOS:** `~/Library/Application Support/OpenRCT2/plugin`
+- **Linux:** `~/.config/OpenRCT2/plugin`
+
+With hot-reloading enabled in OpenRCT2, changes are reflected in-game without restarting.
+
+## Project Structure
+
+```
+src/
+  index.ts    Entry point, plugin registration
+```
 
 ## Releases
 
-Releases are automated via GitHub Actions:
+Releases are automated with GitHub Actions. Push a version tag to trigger a build:
 
-1. Update your code and commit changes
-2. Create and push a version tag:
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
-3. GitHub Actions will automatically:
-   - Update `package.json` with the tag version
-   - Build the plugin
-   - Create a GitHub release with the built file
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
 
 ## License
 

@@ -1,27 +1,21 @@
 {
   "name": "openrct2-plugin-boilerplate",
   "version": "0.0.2",
-  "description": "A boilerplate for creating OpenRCT2 plugins with modern JavaScript tooling",
-  "main": "index.js",
+  "description": "A boilerplate for creating OpenRCT2 plugins with TypeScript and Rollup",
+  "type": "module",
   "scripts": {
-    "build": "rollup -c && babel ./build/openrct2-plugin-boilerplate.js --out-file ./build/openrct2-plugin-boilerplate.js",
-    "deploy": "node deploy.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "npm-watch"
-  },
-  "watch": {
-    "build": "src/*.js"
+    "build": "cross-env BUILD=release rollup -c",
+    "develop": "rollup -c --watch"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.25.9",
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
-    "@rollup/plugin-json": "^6.1.0",
-    "cpy-cli": "^5.0.0",
-    "npm-watch": "^0.13.0",
-    "rollup": "^4.28.1"
-  },
-  "dependencies": {}
+    "@openrct2/types": "^0.4.32",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "cross-env": "^10.1.0",
+    "rollup": "^4.28.1",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.0"
+  }
 }
